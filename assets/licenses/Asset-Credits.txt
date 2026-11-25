@@ -1,0 +1,15 @@
+《星火归航》素材署名
+
+中文字体 FandolHei Regular 与 FandolHei Bold
+Copyright © 2012–2013, the Fandol team.
+设计者 Clerk Ma、Jie Su
+字体发布与源文件 https://ctan.org/pkg/fandol
+许可文本见 Fandol-COPYING.txt。
+
+Lucide 图标
+Copyright (c) 2026 Lucide Icons and Contributors.
+项目 https://lucide.dev/
+许可及继承的图标署名见 LUCIDE-LICENSE.txt。
+
+Godot Engine 4.5.1
+引擎与内置第三方组件的署名及许可文本见 Godot-and-Third-Party.txt。
