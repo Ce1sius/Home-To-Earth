@@ -4,7 +4,7 @@
 
 ## 克隆并运行
 
-在准备存放游戏工程的目录运行以下命令。需要仓库权限时，先登录获邀的 GitHub 账号并接受邀请。
+在准备存放游戏工程的目录运行以下命令。公开仓库可直接克隆。
 
 ```sh
 git clone https://github.com/Ce1sius/Home-To-Earth.git
@@ -16,6 +16,14 @@ cd Home-To-Earth
 3. 按 **F5** 运行游戏。在主菜单选择「开始新游戏」，完成首轮打捞并救助勘探员。有存档时可以选择「继续游戏」。
 
 接手开发的同学和 AI 可先阅读项目背景、已实现的范围、关键文件和验证步骤，再查看仓库的开发约定。[AI 开发交接](AI_HANDOFF.md) · [开发约定](AGENTS.md)
+
+最新火星版策划、课堂汇报及历史稿见 [设计资料](docs/design/README.md)，各阶段的操作画面见 [实机截图](docs/playtests/README.md)。
+
+### 同学如何一起改
+
+仓库所有者在 GitHub 的 **Settings → Collaborators → Add people** 邀请同学的 GitHub 用户名。同学接受后就能把开发分支推回本仓库。[GitHub 协作说明](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository)
+
+以修改高地雷达为例，先在本地执行 `git switch main`、`git pull --ff-only` 和 `git switch -c feature/highland-radar`。修改并试玩后，用 `git status` 核对文件，提交本次改动，再执行 `git push -u origin feature/highland-radar`。最后从 GitHub 发起目标为 `main` 的 Pull Request，让队友能看差异、试玩并合并。
 
 ## 基本操作
 
@@ -238,12 +246,13 @@ cd Home-To-Earth
 
 ## 导出 macOS 应用
 
-在 Mac 上使用 Godot 4.5.1，通过「编辑器 → 管理导出模板」安装匹配该版本的官方模板。在「项目 → 导出」中选用已提交的 `macOS` 预设并导出项目。预设目标是工程上一级的 `星火归航.app`，架构为 Apple Silicon 与 Intel 通用。命令行已配置 `godot` 时，也可在仓库根目录运行以下命令。
+在 Mac 上使用 Godot 4.5.1，通过「编辑器 → 管理导出模板」安装匹配该版本的官方模板。从仓库根目录运行以下命令可生成通过成品验证的通用应用。将 `--godot` 改为本机 Godot 可执行文件的位置，并为 `--output` 选择一个尚未存在的 `.app` 路径。
 
 ```sh
-godot --headless --path . --import
-godot --headless --path . --export-release "macOS" "../星火归航.app"
+python3 tools/export_macos.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output "../星火归航-0.5.0.app"
 ```
+
+已有单独下载的匹配模板时，可追加 `--template /path/to/macos.zip`。脚本从导出的游戏包运行两条归航路线、野外整备、高地雷达和两份 0.4.0 测试存档的迁移，核对 Apple Silicon 与 Intel 架构、素材许可与本地签名后，再写入目标位置。日常开发按 F5 即可运行。
 
 ## 验证
 
